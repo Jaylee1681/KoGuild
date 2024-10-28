@@ -3,70 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Sheets API Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>My GitHub Pages Website</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Spreadsheet Data</h1>
-    <table id="data-table">
-        <thead>
-            <tr id="header-row"></tr>
-        </thead>
-        <tbody id="table-body"></tbody>
-    </table>
+    <h1>Hello, GitHub Pages!</h1>
+    <p>This is my first GitHub Pages website.</p>
 
-    <script>
-        // API 키와 스프레드시트 ID를 입력하세요
-        const apiKey = 'AIzaSyB2IeKNx67Jlow1C7TxLHuN7_n2R54ctiw';  // 여기에 생성한 API 키 입력
-        const spreadsheetId = '1yeTc8HVPNmUpPUKTWFH0tILwbj9YV_kEePWml_7tXdE';  // 여기에 스프레드시트 ID 입력
-        const range = '시트1!B2:AE23';  // 데이터를 가져올 범위 (시트 이름!시작셀:끝셀)
-
-        function fetchSpreadsheetData() {
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const rows = data.values;
-                    if (rows.length > 0) {
-                        const headerRow = document.getElementById('header-row');
-                        const tableBody = document.getElementById('table-body');
-
-                        // 첫 번째 행을 테이블 헤더로 추가
-                        rows[0].forEach(header => {
-                            const th = document.createElement('th');
-                            th.textContent = header;
-                            headerRow.appendChild(th);
-                        });
-
-                        // 나머지 행을 테이블 데이터로 추가
-                        for (let i = 1; i < rows.length; i++) {
-                            const tr = document.createElement('tr');
-                            rows[i].forEach(cell => {
-                                const td = document.createElement('td');
-                                td.textContent = cell;
-                                tr.appendChild(td);
-                            });
-                            tableBody.appendChild(tr);
-                        }
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // 페이지가 로드되면 Google Sheets 데이터를 가져옴
-        fetchSpreadsheetData();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
